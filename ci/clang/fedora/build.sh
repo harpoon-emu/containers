@@ -9,7 +9,8 @@ source ${TD}/build-config.sh
 
 for r in ${FEDORA_RELEASES};
 do
-	tag=fedora-${r}
+	tag=clang-fedora-${r}
 	docker_build ${BD}/Dockerfile ${BD} ${tag} --build-arg FEDORA_RELEASE=$r
+	docker_push ${tag}
 done
 
