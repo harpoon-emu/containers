@@ -9,8 +9,8 @@ source ${TD}/build-config.sh
 
 for r in ${FEDORA_RELEASES};
 do
-	tag=${REPOSITORY}:base-fedora-${r}-${GIT_SHA1}
-	docker build --build-arg FEDORA_RELEASE=$r -t ${tag} -f ${BD}/Dockerfile ${BD}
-	docker push ${tag}
+	tag=base-fedora-${r}
+	docker_build ${BD}/Dockerfile ${BD} ${tag} --build-arg FEDORA_RELEASE=$r
+	docker_push ${tag}
 done
 
